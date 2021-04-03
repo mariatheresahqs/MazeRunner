@@ -5,8 +5,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-void alocarMatriz(int ***matriz, int linhas, int colunas);
-void desalocarMatriz(int **matriz, int linhas);
-void mostrarMatriz(int **matriz, int linhas, int colunas);
+void alocarMatriz(char ***matriz, int linhas, int colunas);
+void desalocarMatriz(char **matriz, int linhas);
+void mostrarMatriz(char **matriz, int linhas, int colunas);
+void inicializarMatrizSolucao(char **matrizSolucao, int linhas, int colunas);
+void mostrarMatriz(char **matriz, int linhas, int colunas);
+void preencherMatrizLabirinto(FILE *arq, char **matrizLabirinto, int linhas, int colunas);
+void mostrarMatrizLabirinto(char **matrizLabirinto, int linhas, int colunas);
 
 #endif
