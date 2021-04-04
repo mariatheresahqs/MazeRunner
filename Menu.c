@@ -12,21 +12,31 @@ void menu(){
         printf("Tente inserir outro nome ou corrigir o que foi inserido.\n");
     } else {
         printf("\nARQUIVO ABERTO COM SUCCESSO!! \n");
-        int linhas, colunas, chave;
-        fscanf(arq, "%d %d %d", &linhas, &colunas, &chave);
-        printf("%d %d %d",linhas,colunas,chave);
-        char **matrizLabirinto, **matrizSolucao;
-        alocarMatriz(&matrizLabirinto, linhas, colunas);
-        alocarMatriz(&matrizSolucao, linhas, colunas);
+        Matriz matriz;
+        int chave;
+        matriz.qntMovimento = 0;
+        fscanf(arq, "%d %d %d ", &matriz.linhas, &matriz.colunas, &matriz.chave);
+        printf("%d %d %d",matriz.linhas,matriz.colunas,matriz.chave);
+        
+        alocarMatriz(&matriz.labirinto, matriz);
+        alocarMatriz(&matriz.solucao, matriz);
+        
+        preencherMatrizSolucao(matriz);
+        // mostrarMatriz(matriz, matriz.solucao);
 
-        inicializarMatrizSolucao(matrizSolucao, linhas, colunas);
-        mostrarMatriz(matrizSolucao, linhas, colunas);
+        preencherMatrizLabirinto(arq, matriz);
+        mostrarMatriz(matriz, matriz.labirinto);
 
-        preencherMatrizLabirinto(arq, matrizLabirinto, linhas, colunas);
-        mostrarMatrizLabirinto(matrizLabirinto, linhas, colunas);
+        encontrarCaminho(&matriz, 0, 0);
 
-        desalocarMatriz(matrizLabirinto, linhas);
-        desalocarMatriz(matrizSolucao, linhas);
+        mostrarCaminhoColorido(matriz, matriz.solucao);
+        printf("Quantidade movimentos: %d", matriz.qntMovimento);
+
+        // mostrarMatriz(matriz, matriz.labirinto);
+
+
+        desalocarMatriz(matriz.labirinto, matriz.linhas);
+        desalocarMatriz(matriz.solucao, matriz.linhas);
     }
     
     printf("Teste\n");

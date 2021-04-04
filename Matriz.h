@@ -5,12 +5,20 @@
 #include <stdlib.h>
 #include <string.h>
 
-void alocarMatriz(char ***matriz, int linhas, int colunas);
+typedef struct Matriz{
+    char **labirinto;
+    char **solucao;
+    int linhas, colunas, chave, qntMovimento;
+}Matriz;
+
+
+void alocarMatriz(char ***matriz, Matriz matrizEscolhida);
 void desalocarMatriz(char **matriz, int linhas);
-void mostrarMatriz(char **matriz, int linhas, int colunas);
-void inicializarMatrizSolucao(char **matrizSolucao, int linhas, int colunas);
-void mostrarMatriz(char **matriz, int linhas, int colunas);
-void preencherMatrizLabirinto(FILE *arq, char **matrizLabirinto, int linhas, int colunas);
-void mostrarMatrizLabirinto(char **matrizLabirinto, int linhas, int colunas);
+void preencherMatrizSolucao(Matriz matriz);
+void mostrarMatriz(Matriz matriz,char **matrizEscolhida);
+void preencherMatrizLabirinto(FILE *arq, Matriz labirinto);
+void inicializarMatrizSolucao(Matriz TAD, char ***matrizSolucao);
+char encontrarCaminho(Matriz *matriz, int linha, int coluna);
+void mostrarCaminhoColorido(Matriz matriz, char **matrizEscolhida);
 
 #endif
