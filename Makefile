@@ -2,7 +2,7 @@ CC = gcc
 
 TARGET = main
 MAIN = $(addsuffix .o, $(TARGET))
-OBJ = Matriz.o Menu.o $(MAIN)
+OBJ = Pilha.o Matriz.o Menu.o $(MAIN)
 
 
 .PHONY: all clean
